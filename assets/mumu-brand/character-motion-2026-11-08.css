@@ -1,0 +1,25 @@
+/* Character motion stays inside the existing artwork box. */
+@media (prefers-reduced-motion: no-preference) {
+  :is(.apx-hero-ip, .mox-hero, .s49-box > img)[src*="mumu-highfive-clean-"] {
+    transform-origin: 52% 94%;
+    animation: mumu-highfive-settle 9s ease-in-out infinite;
+  }
+
+  :is(.s43-hd, .s45-av, .mph-meav, .s41-pv) > img[src*="/mumu-brand/mumu-"] {
+    transform-origin: 50% 87%;
+    animation: mumu-doll-tilt 11s ease-in-out infinite;
+  }
+
+  @keyframes mumu-highfive-settle {
+    0%, 18%, 33%, 100% { transform: none; }
+    20% { transform: translateY(1px) rotate(-0.55deg) scaleY(0.993); }
+    24% { transform: translateY(-3px) rotate(1deg); }
+    28% { transform: rotate(-0.3deg); }
+  }
+
+  @keyframes mumu-doll-tilt {
+    0%, 24%, 45%, 100% { transform: none; }
+    29%, 34% { transform: translateY(-1px) rotate(-2deg); }
+    40% { transform: rotate(0.55deg); }
+  }
+}
