@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute" aria-hidden="true">
+  <!--
+    沐沐小图（小镇地图用，2026-11-13）。和地图同一种画法：平涂两个色调、不描边、带印刷颗粒。
+    用法：把这段 <svg> 原样放进页面一次，然后
+      <svg class="tm" viewBox="0 0 100 116" style="color:#FF4F00"><use href="#tm-mumu"/><use href="#tm-acc-scarf"/></svg>
+    身体颜色 = CSS 的 color（currentColor），所以换色只改 color。徽章、手里拿的东西各是一个 symbol，叠在同一个 viewBox 上。
+    脚是两个单独的 <g class="tm-foot-l / tm-foot-r">，走路时用 CSS 让它们交替抬起。
+  -->
+  <defs>
+    <!-- 暗面：身体减去往左上挪了一点的自己，剩下右下一圈 -->
+    <mask id="tm-shade-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="100" height="116">
+      <g fill="#fff"><ellipse cx="38" cy="35" rx="30" ry="23.5" transform="rotate(-14 38 35)"/><ellipse cx="62" cy="71" rx="32" ry="24.5" transform="rotate(-14 62 71)"/></g>
+      <g transform="translate(-7 -6)" fill="#000"><ellipse cx="38" cy="35" rx="30" ry="23.5" transform="rotate(-14 38 35)"/><ellipse cx="62" cy="71" rx="32" ry="24.5" transform="rotate(-14 62 71)"/></g>
+    </mask>
+    <!-- 印刷颗粒：只落在有颜色的地方 -->
+    <filter id="tm-grain" x="-5%" y="-5%" width="110%" height="110%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="1.4" numOctaves="2" seed="7" result="n"/>
+      <feColorMatrix in="n" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1.6 -0.72" result="dots"/>
+      <feComposite in="dots" in2="SourceAlpha" operator="in" result="dotsIn"/>
+      <feMerge><feMergeNode in="SourceGraphic"/><feMergeNode in="dotsIn"/></feMerge>
+    </filter>
+  </defs>
+
+  <symbol id="tm-mumu" viewBox="0 0 100 116">
+    <g class="tm-foot-l"><rect x="42" y="91" width="19" height="17" rx="7" fill="#201515"/><rect x="42" y="100" width="23" height="9" rx="4.5" fill="#201515"/></g>
+    <g class="tm-foot-r"><rect x="66" y="91" width="19" height="17" rx="7" fill="#201515"/><rect x="66" y="100" width="23" height="9" rx="4.5" fill="#201515"/></g>
+    <g filter="url(#tm-grain)">
+      <g fill="currentColor"><ellipse cx="38" cy="35" rx="30" ry="23.5" transform="rotate(-14 38 35)"/><ellipse cx="62" cy="71" rx="32" ry="24.5" transform="rotate(-14 62 71)"/></g>
+      <rect width="100" height="116" fill="#201515" opacity=".17" mask="url(#tm-shade-mask)"/>
+    </g>
+    <circle cx="31" cy="32.5" r="10" fill="#F8F4F0"/><circle cx="50.5" cy="29.5" r="10" fill="#F8F4F0"/>
+    <circle cx="35" cy="34" r="5.2" fill="#201515"/><circle cx="54.5" cy="31" r="5.2" fill="#201515"/>
+  </symbol>
+
+  <!-- 徽章（和「设计沐沐」里的选项同名：glasses cap bow headphones scarf crown leaf） -->
+  <symbol id="tm-acc-glasses" viewBox="0 0 100 116"><g fill="none" stroke="#201515" stroke-width="3.2" stroke-linecap="round"><circle cx="31" cy="32.5" r="12"/><circle cx="50.5" cy="29.5" r="12"/><path d="M19.5 29.5 12 26.5M62 27l7-3"/></g></symbol>
+  <symbol id="tm-acc-cap" viewBox="0 0 100 116"><g transform="translate(-4 0)"><path d="M17 20C19 6 34 0 48 3s22 12 21 19c-16-5-33-5-52-2z" fill="#687BC7"/><path d="M62 17c9 0 17 3 21 8-7 1-15 0-22-3z" fill="#5466B8"/></g></symbol>
+  <symbol id="tm-acc-bow" viewBox="0 0 100 116"><g transform="translate(-4 0)"><path d="M52 8 38 0v17zM52 8l14-8v17z" fill="#EE5C97"/><circle cx="52" cy="8.5" r="4.2" fill="#C93F7A"/></g></symbol>
+  <symbol id="tm-acc-headphones" viewBox="0 0 100 116"><g transform="translate(-4 0)"><path d="M14 34C12 12 30 2 47 3s29 12 27 29" fill="none" stroke="#201515" stroke-width="4.5" stroke-linecap="round"/><rect x="7" y="29" width="12" height="20" rx="6" fill="#687BC7"/><rect x="68" y="25" width="12" height="20" rx="6" fill="#687BC7"/></g></symbol>
+  <symbol id="tm-acc-scarf" viewBox="0 0 100 116"><path d="M22 55c14 8 40 6 56-5l3 9c-17 12-44 14-60 5z" fill="#687BC7"/><path d="M63 60l9 21-10 3-7-20z" fill="#5466B8"/></symbol>
+  <symbol id="tm-acc-crown" viewBox="0 0 100 116"><g transform="translate(-4 0)"><path d="M28 14 31-1l10 9 8-11 8 11 10-8 1 16c-13-4-27-4-40-2z" fill="#F2B01E"/></g></symbol>
+  <symbol id="tm-acc-leaf" viewBox="0 0 100 116"><g transform="translate(-4 0)"><path d="M46 12C44 2 51-5 62-6c2 10-4 17-16 18z" fill="#35B58A"/><path d="M46 12c4-6 9-11 15-16" fill="none" stroke="#1F7A5C" stroke-width="1.8" stroke-linecap="round"/></g></symbol>
+
+  <!-- 手里拿的东西（按它在做的事叠上去） -->
+  <symbol id="tm-item-envelope" viewBox="0 0 100 116"><rect x="66" y="58" width="30" height="21" rx="2.5" fill="#fff" stroke="#201515" stroke-width="2"/><path d="M67 60l14 11 14-11" fill="none" stroke="#201515" stroke-width="2" stroke-linejoin="round"/></symbol>
+  <symbol id="tm-item-books" viewBox="0 0 100 116"><rect x="64" y="70" width="30" height="8" rx="2" fill="#687BC7"/><rect x="66" y="62" width="27" height="8" rx="2" fill="#F8F4F0" stroke="#201515" stroke-width="1.2"/><rect x="65" y="54" width="29" height="8" rx="2" fill="#F2B01E"/></symbol>
+  <symbol id="tm-item-coin" viewBox="0 0 100 116"><circle cx="84" cy="52" r="11" fill="#F2B01E"/><circle cx="84" cy="52" r="6.5" fill="none" stroke="#B9820F" stroke-width="2"/></symbol>
+  <symbol id="tm-item-paper" viewBox="0 0 100 116"><rect x="68" y="54" width="22" height="28" rx="2" fill="#fff" stroke="#201515" stroke-width="2"/><path d="M73 62h12M73 68h12M73 74h8" stroke="#C5CCE3" stroke-width="2.2" stroke-linecap="round"/></symbol>
+</svg>
